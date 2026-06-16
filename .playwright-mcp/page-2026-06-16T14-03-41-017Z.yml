@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - text: 🛡️
+      - generic [ref=e4]: Sentinel
+    - generic [ref=e5]: Local defensive threat scanner
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - heading "1 · Choose what to scan" [level=2] [ref=e8]
+      - paragraph [ref=e9]: Scanning more perspectives is more thorough but takes longer.
+      - generic [ref=e10]:
+        - generic [ref=e11] [cursor=pointer]:
+          - checkbox "npm packages ~90s" [checked] [ref=e12]
+          - generic [ref=e13]:
+            - text: npm packages
+            - text: ~90s
+        - generic [ref=e14] [cursor=pointer]:
+          - checkbox "Running processes ~185s" [checked] [ref=e15]
+          - generic [ref=e16]:
+            - text: Running processes
+            - text: ~185s
+        - generic [ref=e17] [cursor=pointer]:
+          - checkbox "Network connections ~30s" [checked] [ref=e18]
+          - generic [ref=e19]:
+            - text: Network connections
+            - text: ~30s
+        - generic [ref=e20] [cursor=pointer]:
+          - checkbox "Startup persistence ~20s" [checked] [ref=e21]
+          - generic [ref=e22]:
+            - text: Startup persistence
+            - text: ~20s
+        - generic [ref=e23] [cursor=pointer]:
+          - checkbox "Browser extensions ~15s" [checked] [ref=e24]
+          - generic [ref=e25]:
+            - text: Browser extensions
+            - text: ~15s
+      - generic [ref=e26]:
+        - generic [ref=e27] [cursor=pointer]:
+          - checkbox "Automatic mode — auto-remove high-confidence threats" [ref=e28]
+          - generic [ref=e29]: Automatic mode — auto-remove high-confidence threats
+        - generic [ref=e30]: "Est. time: 5m 40s"
+      - button "Start scan" [ref=e31] [cursor=pointer]
+  - dialog [ref=e32]:
+    - generic [ref=e33]:
+      - paragraph
+      - generic [ref=e34]:
+        - button "Cancel" [ref=e35] [cursor=pointer]
+        - button "Confirm" [ref=e36] [cursor=pointer]

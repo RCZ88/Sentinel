@@ -1,0 +1,6 @@
+{
+  "name": "sample-node-project",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": { "chalk": "5.6.1", "evil-pkg": "1.0.0" }
+}

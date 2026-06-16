@@ -1,0 +1,57 @@
+# Sentinel configuration — edit to tune scan behavior.
+# All paths support Windows environment variables like %USERPROFILE%.
+
+scan:
+  # Roots searched by the npm scanner. Add your project / agent workspace folders.
+  npm_roots:
+    - "%USERPROFILE%"
+    - "%APPDATA%\\npm"
+    - "%LOCALAPPDATA%"
+  # Skip these directory names while walking (perf + noise reduction).
+  npm_skip_dirs:
+    - ".git"
+    - ".cache"
+    - "AppData\\Local\\Temp\\chocolatey"
+  # Max node_modules depth to descend (guards against runaway trees).
+  npm_max_depth: 8
+
+  # Process / CPU behavior monitor.
+  process_sample_seconds: 180     # total observation window
+  process_sample_interval: 3      # seconds between CPU samples
+  process_cpu_floor: 5.0          # ignore processes that never exceed this %
+
+  # Network scanner.
+  network_resolve_dns: true
+  network_beacon_min_hits: 4      # repeated fixed-interval callouts to flag beaconing
+
+thresholds:
+  # Automatic mode acts on findings at or above BOTH of these.
+  auto_verdict: "malicious"
+  auto_confidence: 0.85
+
+intel:
+  # Feeds are fetched then cached locally; scans still work offline.
+  refresh_hours: 12
+  feeds:
+    osv: "https://api.osv.dev/v1/query"
+    threatfox: "https://threatfox-api.abuse.ch/api/v1/"
+    urlhaus: "https://urlhaus-api.abuse.ch/v1/"
+  # Offline bundled lists live in data/intel/*.json and are always loaded.
+
+paths:
+  data_dir: "%LOCALAPPDATA%\\Sentinel"   # db, quarantine vault, reports, intel cache
+
+ui:
+  host: "127.0.0.1"
+  port: 8787
+
+ai:
+  # Optional: plain-language explanations of each finding via an OpenAI-compatible
+  # API (OpenRouter by default). Sentinel works fully without this; verdicts,
+  # evidence and reasoning are always computed locally and offline.
+  enabled: false
+  provider: "openrouter"
+  api_key: ""                 # or set the OPENROUTER_API_KEY environment variable
+  model: "openai/gpt-4o-mini"
+  base_url: "https://openrouter.ai/api/v1"
+  timeout_seconds: 30
